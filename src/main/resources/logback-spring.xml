@@ -1,0 +1,19 @@
+<configuration scanPeriod="1 seconds" debug="false">
+    <springProperty scope="context" name="path" source="api.log.path" defaultValue="."/>
+
+    <appender name="File-Appender" class="ch.qos.logback.core.FileAppender">
+        <file>${path}/YiHua.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="File-Appender" />
+    </root>
+</configuration>
